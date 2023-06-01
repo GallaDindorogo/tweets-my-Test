@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import UserCard from 'components/modules/UserCard/UserCard';
+import Btn from 'shared/Button/Button';
 
 const TweetsPage = () => {
   const users = [
@@ -41,7 +42,7 @@ const TweetsPage = () => {
         ))}
       </div>
       <Link to="/" style={{ textDecoration: 'none' }}>
-        <button>Back</button>
+        <Btn />
       </Link>
     </>
   );
