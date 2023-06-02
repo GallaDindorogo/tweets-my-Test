@@ -1,23 +1,41 @@
 import styles from './UserCard.module.scss';
+import Btn from '../../../shared/Button/Button';
 
-const UserCard = ({ user, followers, isFollowing, handleFollow }) => {
+const UserCard = ({
+  user,
+  tweets,
+  followers,
+  avatar,
+  isFollowing,
+  handleFollow,
+}) => {
   return (
     <>
       <div className={styles.tweetCard}>
         <div className={styles.svgContainer}></div>
         <div className={styles.divider}>
-          <img src={user.avatar} alt="User Avatar" />
+          <div className={styles.avatar}>
+            {/* <svg className={styles.avatar_user}>
+              <use href="../../../shared/images/avatar.svg"></use>
+            </svg> */}
+            <img
+              className={styles.avatar_user}
+              src={avatar}
+              width="80"
+              alt="User Avatar"
+            />
+          </div>
         </div>
 
         <div className={styles.infoBlockWrapper}>
           <div className={styles.infoBlock}>
-            <p className={styles.text}>{user.tweets} TWEETS</p>
+            <p className={styles.text}>{tweets} TWEETS</p>
 
             <p className={styles.text}>{followers} FOLLOWERS</p>
 
-            <button onClick={handleFollow}>
+            <Btn onClick={handleFollow}>
               {isFollowing ? 'Following' : 'Follow'}
-            </button>
+            </Btn>
           </div>
         </div>
       </div>

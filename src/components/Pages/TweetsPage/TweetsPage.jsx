@@ -8,7 +8,7 @@ const TweetsPage = () => {
       user: 'Elon Mask',
       tweets: 777,
       followers: 100500,
-      avatar: 'url.jpg',
+      avatar: '../../../shared/images/Hansel.jpg',
       id: 1,
     },
     // {
@@ -33,8 +33,9 @@ const TweetsPage = () => {
       <div>
         {users.map(user => (
           <UserCard
-            key={user.id}
             user={user}
+            key={user.id}
+            avatar={user.avatar}
             followers={user.followers}
             // isFollowing={isFollowing}
             // handleFollow={handleFollow}
@@ -42,7 +43,7 @@ const TweetsPage = () => {
         ))}
       </div>
       <Link to="/" style={{ textDecoration: 'none' }}>
-        <Btn />
+        <button>Back</button>
       </Link>
     </>
   );
