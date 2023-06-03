@@ -1,7 +1,6 @@
 import styles from './UserCard.module.scss';
 import Btn from '../../../shared/Button/Button';
 import LogoIcon from 'shared/icons/LogoIcon';
-import Avatar from 'shared/icons/Avatar';
 
 const UserCard = ({ user, tweets, followers, isFollowing, handleFollow }) => {
   return (
