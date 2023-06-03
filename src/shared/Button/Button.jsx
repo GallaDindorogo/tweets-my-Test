@@ -1,13 +1,16 @@
 import styles from './Button.module.scss';
 
-const Btn = ({ children, type = 'submit', className }) => {
+const Btn = ({ children, onClick, active }) => {
   return (
     <div className={styles.ButtonContainer}>
-      <button type={type} className={styles.Button}>
+      <button
+        type="button"
+        onClick={onClick}
+        className={`${styles.Button} ${active ? styles.active : ''}`}
+      >
         {children}
       </button>
     </div>
   );
 };
-
 export default Btn;
