@@ -23,6 +23,7 @@ const UserCard = ({ user, tweets, followers, isFollowing, handleFollow }) => {
 
           <div className={styles.infoBlockWrapper}>
             <div className={styles.infoBlock}>
+              <p className={styles.textUser}>{user.user}</p>
               <p className={styles.text}>{tweets} TWEETS</p>
               <p className={styles.text}>{followers} FOLLOWERS</p>
               <div>
@@ -33,7 +34,6 @@ const UserCard = ({ user, tweets, followers, isFollowing, handleFollow }) => {
             </div>
           </div>
         </div>
-        <h3>Name {user.user}</h3>
       </div>
     </>
   );

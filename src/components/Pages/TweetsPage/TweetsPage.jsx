@@ -4,6 +4,7 @@ import axios from 'axios';
 import styles from './TweetsPage.module.scss';
 
 import UserCard from 'components/modules/UserCard/UserCard';
+import Btn from 'shared/Button/Button';
 
 const TweetsPage = () => {
   const [users, setUsers] = useState([]);
@@ -59,9 +60,6 @@ const TweetsPage = () => {
 
   return (
     <>
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <button>Back</button>
-      </Link>
       <div className={styles.wrapperTweetsPage}>
         {currentTweets.map(user => (
           <UserCard
@@ -75,10 +73,16 @@ const TweetsPage = () => {
           />
         ))}
       </div>
-
-      {users.length > indexOfLastTweet && (
-        <button onClick={handleLoadMore}>Load More</button>
-      )}
+      <div className={styles.loadMoreWrapper}>
+        {users.length > indexOfLastTweet && (
+          <p onClick={handleLoadMore}>Load More...</p>
+        )}
+      </div>
+      <div className={styles.goBackWrapper}>
+        <Link to="/">
+          <Btn>Go back</Btn>
+        </Link>
+      </div>
     </>
   );
 };
