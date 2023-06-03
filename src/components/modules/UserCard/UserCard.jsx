@@ -16,7 +16,11 @@ const UserCard = ({ user, tweets, followers, isFollowing, handleFollow }) => {
           <div className={styles.divider}>
             <div className={styles.avatar}>
               <span className={styles.avatar_user}>
-                <Avatar />
+                <img
+                  src={user.avatar}
+                  alt="User Avatar"
+                  className={styles.avatarImage}
+                />
               </span>
             </div>
           </div>

@@ -17,12 +17,8 @@
 }
 
 .homeBody {
+  width: 750px;
+  height: 750px;
   background-size: contain;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(
-      to left,
-      transparent,
-      rgba(98, 68, 111, 0.9)
-    ),
-    url(../../schare/Tropical.svg);
+  background-image: url(../../../shared/images/Following.svg);
 }

@@ -49,9 +49,7 @@ const TweetsPage = () => {
     });
   };
 
-  // Обчислюємо індекси першого і останнього твіта на поточній сторінці
   const indexOfLastTweet = currentPage * tweetsPerPage;
-  // const indexOfFirstTweet = indexOfLastTweet - tweetsPerPage;
   const currentTweets = users.slice(0, indexOfLastTweet);
 
   const handleLoadMore = () => {
