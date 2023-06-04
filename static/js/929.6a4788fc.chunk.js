@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktweets_my_Test=self.webpackChunktweets_my_Test||[]).push([[929],{929:function(e,t,s){s.r(t),s.d(t,{default:function(){return a}});var n=s(691),r="Loader_ContainerLoader__3C4EI",i=s(184),a=function(){return(0,i.jsx)("div",{className:r,children:(0,i.jsx)(n.s5,{strokeColor:"#803fb5",strokeWidth:"5",animationDuration:"0.75",width:"50",visible:!0})})}}}]);
+//# sourceMappingURL=929.6a4788fc.chunk.js.map
