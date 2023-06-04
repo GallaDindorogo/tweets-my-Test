@@ -5,6 +5,7 @@ import styles from './TweetsPage.module.scss';
 
 import UserCard from 'components/modules/UserCard/UserCard';
 import Btn from 'shared/Button/Button';
+import Filter from 'components/modules/Filter/Filter';
 
 const TweetsPage = () => {
   const [users, setUsers] = useState([]);
@@ -58,6 +59,15 @@ const TweetsPage = () => {
 
   return (
     <>
+      <div className={styles.wrapperTweetsPageButtons}>
+        <div className={styles.goBackWrapper}>
+          <Link to="/">
+            <Btn>Go back</Btn>
+          </Link>
+        </div>
+        <Filter />
+      </div>
+
       <div className={styles.wrapperTweetsPage}>
         {currentTweets.map(user => (
           <UserCard
@@ -75,11 +85,6 @@ const TweetsPage = () => {
         {users.length > indexOfLastTweet && (
           <p onClick={handleLoadMore}>Load More...</p>
         )}
-      </div>
-      <div className={styles.goBackWrapper}>
-        <Link to="/">
-          <Btn>Go back</Btn>
-        </Link>
       </div>
     </>
   );

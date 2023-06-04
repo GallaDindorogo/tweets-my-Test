@@ -1,7 +1,6 @@
 .ButtonContainer {
   margin-left: auto;
   margin-right: auto;
-  // padding-top: 18px;
 }
 
 .Button {
@@ -13,20 +12,17 @@
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-
-  // font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   text-transform: uppercase;
   color: #373737;
-
-  &:hover {
-    background-color: #dcbbff;
-  }
+}
+.Button:hover {
+  background-color: #dcbbff;
 }
 
 .Button.active {
   background: #5cd3a8;
-}
+}/*# sourceMappingURL=Button.module.css.map */
