@@ -1,61 +1,37 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { getFilter } from 'redux/Filter/selector';
 import styles from './TweetsPage.module.scss';
-
 import UserCard from 'components/modules/UserCard/UserCard';
 import Btn from 'shared/Button/Button';
 import Filter from 'components/modules/Filter/Filter';
+import { fetchTweets, handleFollow, handleLoadMore } from 'shared/utils';
 
 const TweetsPage = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [tweetsPerPage] = useState(3);
+  const { filterOption } = useSelector(getFilter);
 
   useEffect(() => {
-    const fetchTweets = async () => {
-      try {
-        const response = await axios.get(
-          'https://640dee65b07afc3b0dba3c72.mockapi.io/users'
-        );
-        const savedUsers = JSON.parse(localStorage.getItem('users'));
-        if (savedUsers) {
-          setUsers(savedUsers);
-        } else {
-          setUsers(response.data);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchTweets();
+    fetchTweets(setUsers);
   }, []);
-
-  const handleFollow = userId => {
-    setUsers(prevUsers => {
-      const updatedUsers = prevUsers.map(user =>
-        user.id === userId
-          ? {
-              ...user,
-              isFollowing: !user.isFollowing,
-              followers: user.isFollowing
-                ? user.followers - 1
-                : user.followers + 1,
-            }
-          : user
-      );
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
-      return updatedUsers;
-    });
-  };
 
   const indexOfLastTweet = currentPage * tweetsPerPage;
   const currentTweets = users.slice(0, indexOfLastTweet);
 
-  const handleLoadMore = () => {
-    setCurrentPage(prevPage => prevPage + 1);
-  };
+  const filteredTweets = currentTweets.filter(tweet => {
+    if (filterOption === 'show all') {
+      return true;
+    } else if (filterOption === 'followings') {
+      return tweet.isFollowing;
+    } else if (filterOption === 'follow') {
+      return !tweet.isFollowing;
+    } else {
+      return true;
+    }
+  });
 
   return (
     <>
@@ -69,7 +45,7 @@ const TweetsPage = () => {
       </div>
 
       <div className={styles.wrapperTweetsPage}>
-        {currentTweets.map(user => (
+        {filteredTweets.map(user => (
           <UserCard
             key={user.id}
             user={user}
@@ -77,13 +53,13 @@ const TweetsPage = () => {
             tweets={user.tweets}
             followers={user.followers}
             isFollowing={user.isFollowing}
-            handleFollow={() => handleFollow(user.id)}
+            handleFollow={() => handleFollow(user.id, users, setUsers)}
           />
         ))}
       </div>
       <div className={styles.loadMoreWrapper}>
         {users.length > indexOfLastTweet && (
-          <p onClick={handleLoadMore}>Load More...</p>
+          <p onClick={() => handleLoadMore(setCurrentPage)}>Load More...</p>
         )}
       </div>
     </>

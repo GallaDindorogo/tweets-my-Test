@@ -1,44 +1,39 @@
-import React, { useState } from 'react';
-
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getRequestParams } from 'redux/filter/filterSelectors';
-// import { setRequestParams } from 'redux/filter/requestParamsSlice';
-
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './Filter.module.scss';
-import CustomCheckbox from './CustomCheckBox';
+import RadioButtons from './CustomCheckBox';
 import Btn from 'shared/Button/Button';
+import { setFilterOption } from 'redux/Filter/filterSlice';
+import { options } from './options';
 
 const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('show all');
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setFilterOption(selectedOption));
+  }, [dispatch, selectedOption]);
 
   const handleFilterClick = () => {
     setIsOpen(!isOpen);
   };
 
   const handleOptionSelect = option => {
-    if (selectedOption.includes(option)) {
-      setSelectedOption(selectedOption.filter(val => val !== option));
+    if (selectedOption === option) {
+      setSelectedOption('');
     } else {
-      setSelectedOption([...selectedOption, option]);
+      setSelectedOption(option);
     }
   };
-
-  //   const requestParams = useSelector(getRequestParams);
-  //   const selectedOption = requestParams.selectedOption;
-
-  //   const handleOptionSelect = option => {
-  //     dispatch(setRequestParams({ ...requestParams, selectedOption: option }));
-  //   };
 
   return (
     <div className={styles.dropdownContainer}>
       <Btn onClick={handleFilterClick}>Filter</Btn>
       {isOpen && (
         <div className={styles.optionsContainer}>
-          <CustomCheckbox
-            isOpen={isOpen}
+          <RadioButtons
+            options={options}
             selectedOption={selectedOption}
             handleOptionSelect={handleOptionSelect}
           />

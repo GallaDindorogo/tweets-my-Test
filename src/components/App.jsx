@@ -9,8 +9,8 @@ const Loader = lazy(() => import('../shared/Loader/Loader'));
 
 export const App = () => {
   return (
-    <Suspense>
-      <Routes fallback={<Loader />}>
+    <Suspense fallback={<Loader />}>
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="tweets" element={<TweetsPage />} />

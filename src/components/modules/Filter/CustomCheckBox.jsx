@@ -1,24 +1,18 @@
 import styles from './Filter.module.scss';
+import PropTypes from 'prop-types';
 
-const CustomCheckbox = ({ selectedOption, handleOptionSelect }) => {
-  const options = [
-    { value: 'option1', label: 'show all' },
-    { value: 'option2', label: 'follow' },
-    { value: 'option3', label: 'followings' },
-  ];
-
+const RadioButtons = ({ options, selectedOption, handleOptionSelect }) => {
   return (
     <div className={styles.customCheckboxContainer}>
       {options.map(option => (
         <li key={option.value}>
           <label className={styles.customCheckbox}>
             <input
-              type="checkbox"
+              type="radio"
               value={option.value}
-              checked={selectedOption.includes(option.value)}
+              checked={selectedOption === option.value}
               onChange={() => handleOptionSelect(option.value)}
             />
-
             <span className={styles.label}>{option.label}</span>
           </label>
         </li>
@@ -27,4 +21,15 @@ const CustomCheckbox = ({ selectedOption, handleOptionSelect }) => {
   );
 };
 
-export default CustomCheckbox;
+RadioButtons.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  selectedOption: PropTypes.string.isRequired,
+  handleOptionSelect: PropTypes.func.isRequired,
+};
+
+export default RadioButtons;

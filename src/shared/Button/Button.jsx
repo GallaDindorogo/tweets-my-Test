@@ -1,4 +1,5 @@
 import styles from './Button.module.scss';
+import PropTypes from 'prop-types';
 
 const Btn = ({ children, onClick, active }) => {
   return (
@@ -13,4 +14,10 @@ const Btn = ({ children, onClick, active }) => {
     </div>
   );
 };
+
+Btn.propTypes = {
+  children: PropTypes.node.isRequired,
+  active: PropTypes.bool,
+};
+
 export default Btn;

@@ -1,4 +1,6 @@
 import styles from './UserCard.module.scss';
+import PropTypes from 'prop-types';
+
 import Btn from '../../../shared/Button/Button';
 import LogoIcon from 'shared/icons/LogoIcon';
 
@@ -40,6 +42,17 @@ const UserCard = ({ user, tweets, followers, isFollowing, handleFollow }) => {
       </div>
     </>
   );
+};
+
+UserCard.propTypes = {
+  user: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+  }).isRequired,
+  tweets: PropTypes.number.isRequired,
+  followers: PropTypes.number.isRequired,
+  isFollowing: PropTypes.bool.isRequired,
+  handleFollow: PropTypes.func.isRequired,
 };
 
 export default UserCard;
