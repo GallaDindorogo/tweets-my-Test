@@ -59,7 +59,7 @@ const TweetsPage = () => {
       </div>
       <div className={styles.loadMoreWrapper}>
         {users.length > indexOfLastTweet && (
-          <p onClick={() => handleLoadMore(setCurrentPage)}>Load More...</p>
+          <Btn onClick={() => handleLoadMore(setCurrentPage)}>Load More...</Btn>
         )}
       </div>
     </>
