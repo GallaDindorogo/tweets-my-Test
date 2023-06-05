@@ -13,3 +13,5 @@ The project implements routing with two main routes:
 - Tweets Page: Access "/tweets" to explore a dedicated page displaying tweets. A Back button ensures easy navigation to the main page.
 
 Discover the joy of tracking tweets and managing followers in this intuitive project. Let's get started!
+
+<img width="1021" alt="screen" src="https://github.com/GallaDindorogo/tweets-my-Test/assets/107935917/162bd598-b5da-4690-9192-9cef57d1dbea">
